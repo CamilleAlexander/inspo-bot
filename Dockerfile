@@ -16,7 +16,7 @@ RUN npm install --omit=dev
 COPY . .
 
 # Run the web service on the container's port 8080
-ENV PORT 8080
+ENV PORT = 8080
 EXPOSE 8080
 
 # Run the bot
