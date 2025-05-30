@@ -1,18 +1,18 @@
 {
-  "name": "cloud-run-task-bot",
-  "version": "1.0.0",
+  "name": "cloud-run-task-bot",                // 🤖 Project name
+  "version": "1.0.0",                          // 🧾 Initial version
   "description": "A Google Cloud Run bot to generate task prompts and advice for AI agents.",
-  "main": "cloudRunTaskBot.js",
-  "type": "module",
+  "main": "cloudRunTaskBot.js",                // 📂 Entry point
+  "type": "module",                            // 🧱 Using ES modules
   "scripts": {
-    "start": "node cloudRunTaskBot.js"
+    "start": "node cloudRunTaskBot.js"         // 🚀 Start script
   },
-  "keywords": [],
-  "author": "Cami",
-  "license": "ISC",
+  "keywords": [],                              // 🏷️ Optional: add tags like ["AI", "bot", "cloud-run"]
+  "author": "Cami",                            // 🖋️ That's you!
+  "license": "ISC",                            // 📝 Open source license
   "dependencies": {
-    "dotenv": "^16.4.5",
-    "express": "^4.19.2",
-    "node-fetch": "^3.3.2"
+    "dotenv": "^16.4.5",                       // 🔐 For environment variables
+    "express": "^4.19.2",                      // 🛣️ Web framework
+    "node-fetch": "^3.3.2"                     // 🌐 For HTTP requests
   }
 }
