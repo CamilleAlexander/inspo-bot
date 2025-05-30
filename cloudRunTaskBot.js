@@ -35,7 +35,7 @@ app.post('/run-task', async (req, res) => {
         'Content-Type': 'application/json'
       },
       body: JSON.stringify({
-        model: "meta-llama/Llama-3-8b-Instruct",
+        model: "meta-llama/Llama-3-3-70B-Instruct-Turbo-Free",
         prompt: `You are ${assignedTo}. Complete the following task:
 
 ${scenarioPrompt}`,
