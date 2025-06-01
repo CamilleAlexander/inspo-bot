@@ -8,6 +8,8 @@ dotenv.config();
 const app = express();
 app.use(express.json());
 
+console.log("Loaded secret key:", process.env.CLOUD_RUN_SECRET_KEY);
+
 // 🔐 Middleware to verify incoming requests
 app.use((req, res, next) => {
   const apiKey = req.headers['x-api-key'];
