@@ -74,7 +74,9 @@ Use rich language and structure. Return the answer in this format:
     });
 
     const data = await togetherResponse.json();
+    console.log("Together raw response:", data);
     const responseText = data.choices?.[0]?.text?.trim() || "No response generated.";
+
 
     // 🖨️ Step 4: Log result
     console.log(`[${assignedTo}] (${taskType}) → Scenario: ${scenario}`);
