@@ -23,7 +23,7 @@ app.post('/run-task', async (req, res) => {
 
   try {
     // 🌐 Step 1: Fetch scenario from GitHub
-    const ghResponse = await fetch(`https://raw.githubusercontent.com/YOUR_USERNAME/YOUR_REPO/main/scenarios/${scenario}.md`);
+    const ghResponse = await fetch(`https://raw.githubusercontent.com/CamilleAlexander/inspo-bot/main/scenarios/${scenario}.md`);
     const scenarioPrompt = await ghResponse.text();
 
     // 🧠 Step 2: Build the enhanced task prompt
