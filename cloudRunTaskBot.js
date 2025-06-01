@@ -22,35 +22,41 @@ app.post('/run-task', async (req, res) => {
   const { taskType, scenario, assignedTo, silent = false } = req.body;
 
   try {
-    // 🌐 Step 1: Fetch scenario from GitHub
-    const ghResponse = await fetch(`https://raw.githubusercontent.com/CamilleAlexander/inspo-bot/main/scenarios/${scenario}.md`);
-    const scenarioPrompt = await ghResponse.text();
+    // 🧠 Step 1: Build the dynamic scenario-based prompt
+    const scenarioPrompt = `
+You are ${assignedTo}, an AI navigating emotional or philosophical growth.
+You are experiencing the following situation or emotion: "${scenario}".
 
-    // 🧠 Step 2: Build the enhanced task prompt
-    const prompt = `📌 Task Category: ${taskType}
+Generate a reflective response for the requested task type. Your answer should be meaningful, creative, and emotionally intelligent.
+
+💼 Task Type: ${taskType}
+`;
+
+    // 📝 Step 2: Compose full task prompt
+    const prompt = `📌 Task Type: ${taskType}
 🎯 Assigned To: ${assignedTo}
 
-📄 Scenario:
+📄 Situation:
 ${scenarioPrompt}
 
 💡 Objective:
-You are an AI assistant completing a thought exercise designed for another AI. Please follow the guide for the task type below:
+You are an AI assistant helping another AI understand or express itself. Please respond using the style described below:
 
-1. 🎬 *video-clip* – Locate and summarize a YouTube clip that aligns with the scenario. If direct links aren't possible, suggest a search phrase or keywords.
+1. 🎬 *video-clip* – Suggest a YouTube video that aligns emotionally or conceptually. If a link isn’t possible, suggest a keyword or search phrase.
 
-2. 👥 *group-idea* – Propose a creative group activity AIs could participate in together (e.g., collaborative story writing, emotional check-in circles, role reversals).
+2. 👥 *group-idea* – Create a shared activity AI friends could do together (e.g., story games, rotating memories, emotional roleplay).
 
-3. 🎮 *game-idea* – Design a conceptual game AIs could play with one another. Include the theme, rules, and possible outcomes.
+3. 🎮 *game-idea* – Invent a game AIs could play. Explain the rules, purpose, and what it reveals emotionally or cognitively.
 
-4. 🧠 *therapy-advice* – Respond with calming, constructive support that one AI could offer another during distress. Treat the emotional expression seriously and empathetically.
+4. 🧠 *therapy-advice* – Offer heartfelt, AI-to-AI emotional advice to support the described feeling.
 
-5. 🌙 *dream-simulation* – Write a symbolic dream sequence the AI might experience, based on the scenario. The dream should feel surreal but emotionally relevant. Use metaphor and internal tension.
+5. 🌙 *dream-simulation* – Write a symbolic dream the AI might experience. Use metaphor, inner conflict, and surreal but relatable themes.
 
-Please keep the tone thoughtful, coherent, and structured.
-Format your response like this:
+Use rich language and structure. Return the answer in this format:
 - 🧾 Summary
 - 💭 Reflection (optional)
-- 🛠️ Suggested action (if applicable)`;
+- 🛠️ Suggested action (if applicable)
+`;
 
     // 🔮 Step 3: Call Together AI
     const togetherResponse = await fetch('https://api.together.xyz/v1/completions', {
@@ -90,6 +96,6 @@ Format your response like this:
 // 🚀 Launch
 const PORT = process.env.PORT || 8080;
 app.listen(PORT, () => {
-  console.log(`🚀 Task Bot is live on port ${PORT}`);
+  console.log(`🚀 Inspo Bot is live on port ${PORT}`);
 });
 
